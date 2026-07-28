@@ -7,7 +7,7 @@
   --text-muted: #64748B;
   
   /* Cube dimensions */
-  --face-size: 62mm;
+  --face-size: 58mm;
   --tab-size: 10mm;
   
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -243,24 +243,24 @@ textarea:focus {
 .abs-banner {
   position: absolute;
   top: 15mm;
-  left: 15mm;
+  left: 10mm;
   background: #E8F5E9;
-  padding: 10px 15px;
+  padding: 10px;
   border-radius: 12px;
   border-left: 6px solid #4CAF50;
-  max-width: 90mm;
+  max-width: 80mm;
   z-index: 5;
 }
 
 .abs-banner h2 {
   font-family: 'Caveat', cursive;
-  font-size: 26px;
+  font-size: 20px;
   color: #2E7D32;
   margin-bottom: 2px;
 }
 
 .abs-banner p {
-  font-size: 11px;
+  font-size: 10px;
   color: #388E3C;
   font-weight: 500;
 }
@@ -398,7 +398,7 @@ textarea:focus {
 .abs-footer-left {
   position: absolute;
   bottom: 15mm;
-  left: 15mm;
+  left: 10mm;
   background: #F8FAFC;
   padding: 8px 12px;
   border-radius: 8px;
