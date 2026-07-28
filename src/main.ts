@@ -79,43 +79,6 @@ function update3DCube() {
   });
 }
 
-let rotX = -20;
-let rotY = -30;
-
-function init3DDrag() {
-  const scene = document.getElementById('scene-3d');
-  const cube = document.getElementById('cube-3d');
-  if (!scene || !cube) return;
-
-  cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-
-  let isDragging = false;
-  let previousMousePosition = { x: 0, y: 0 };
-
-  scene.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    previousMousePosition = { x: e.clientX, y: e.clientY };
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    const deltaMove = {
-      x: e.clientX - previousMousePosition.x,
-      y: e.clientY - previousMousePosition.y
-    };
-    
-    rotY += deltaMove.x * 0.5;
-    rotX -= deltaMove.y * 0.5;
-    
-    cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-    previousMousePosition = { x: e.clientX, y: e.clientY };
-  });
-
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
-}
-
 function renderApp() {
   const controlsContainer = document.getElementById('controls')!;
   const cubeNetContainer = document.getElementById('cube-net')!;
@@ -283,7 +246,6 @@ function renderApp() {
 
 function initApp() {
   renderApp();
-  init3DDrag();
   
   document.getElementById('print-btn')?.addEventListener('click', () => {
     confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
