@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nadine's Fragewürfel Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside class="sidebar no-print">
+        <header>
+          <div class="logo">
+            <span class="icon">🎲</span>
+            <h1 style="font-size: 22px;">Nadine's Fragewürfel Creator</h1>
+          </div>
+          <p>Create & print your custom question cube</p>
+        </header>
+
+        <div class="controls" id="controls">
+          <!-- Inputs dynamically populated -->
+        </div>
+
+        <div class="actions">
+          <button id="print-btn" class="primary-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print Cube
+          </button>
+        </div>
+        <div class="sidebar-footer" style="padding: 16px; text-align: center; font-size: 13px; font-weight: 500; color: #64748B; border-top: 1px solid #E2E8F0; background: #f8fafc;">
+          Created by Thomas Ritter
+        </div>
+      </aside>
+
+      <main class="preview-area">
+        <div class="print-container" id="print-container">
+          
+          <div class="abs-banner">
+            <h2>NADINE'S FRAGENWÜRFEL <span class="leaf">🌿</span></h2>
+            <p>zum Ausschneiden und Zusammenkleben 💚</p>
+          </div>
+          
+          <div class="abs-instructions">
+            <div class="instruction-badge">SO GEHT'S:</div>
+            <ul>
+              <li><span class="icon">✂️</span> 1. Entlang der durchgezogenen Linien ausschneiden.</li>
+              <li><span class="icon">📏</span> 2. An den gestrichelten Linien falten.</li>
+              <li><span class="icon">🧴</span> 3. Klebelaschen mit Kleber bestreichen und zusammenkleben.</li>
+            </ul>
+            <div class="fun-msg">❤️ Viel Spaß!</div>
+          </div>
+
+          <div class="cube-net-wrapper">
+            <div class="cube-net" id="cube-net">
+              <!-- JS generates faces and tabs -->
+            </div>
+          </div>
+          
+          <div class="abs-footer-left">
+            <strong>TIPP:</strong> Für mehr Stabilität auf dickeres Papier drucken.
+          </div>
+          
+          <div class="abs-footer-right">
+            <span style="font-weight: 600; color: #475569;">Created by Thomas Ritter</span><br>
+            🖨️ DRUCKEMPFEHLUNG: In tatsächlicher Größe (100 %) auf DIN A4 drucken.
+          </div>
+
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
