@@ -140,7 +140,7 @@ function renderApp() {
       else if (tabDir === 'bottom') { tabDiv.style.bottom = 'calc(var(--tab-size) * -1)'; tabDiv.style.left = '0'; }
       else if (tabDir === 'left') { tabDiv.style.top = '0'; tabDiv.style.left = 'calc(var(--tab-size) * -1)'; }
       else if (tabDir === 'right') { tabDiv.style.top = '0'; tabDiv.style.right = 'calc(var(--tab-size) * -1)'; }
-      tabDiv.innerHTML = `${createTabSVG(isH ? 'h' : 'v', tabDir as any)}<span>KLEBELASCHE</span>`;
+      tabDiv.innerHTML = `${createTabSVG(isH ? 'h' : 'v', tabDir as any)}<span contenteditable="true" spellcheck="false" title="Click to edit">KLEBELASCHE</span>`;
       faceDiv.appendChild(tabDiv);
     });
 
