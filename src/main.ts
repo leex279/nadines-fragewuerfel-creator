@@ -56,6 +56,66 @@ function createTabSVG(type: 'h' | 'v', direction: 'top' | 'bottom' | 'left' | 'r
           </svg>`;
 }
 
+function update3DCube() {
+  const map: Record<string, string> = {
+    'center': '3d-center',
+    'right2': '3d-back',
+    'right1': '3d-right1',
+    'left': '3d-left',
+    'top': '3d-top',
+    'bottom': '3d-bottom'
+  };
+  
+  currentFaces.forEach(face => {
+    const el = document.getElementById(map[face.id]);
+    if (el) {
+      el.style.backgroundColor = face.bgColor;
+      if (face.imageUrl) {
+        el.innerHTML = `<img src="${face.imageUrl}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;margin-bottom:4px;" /><div class="text">${face.defaultText}</div>`;
+      } else {
+        el.innerHTML = `<div class="emoji">${face.emoji}</div><div class="text">${face.defaultText}</div>`;
+      }
+    }
+  });
+}
+
+let rotX = -20;
+let rotY = -30;
+
+function init3DDrag() {
+  const scene = document.getElementById('scene-3d');
+  const cube = document.getElementById('cube-3d');
+  if (!scene || !cube) return;
+
+  cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+
+  let isDragging = false;
+  let previousMousePosition = { x: 0, y: 0 };
+
+  scene.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const deltaMove = {
+      x: e.clientX - previousMousePosition.x,
+      y: e.clientY - previousMousePosition.y
+    };
+    
+    rotY += deltaMove.x * 0.5;
+    rotX -= deltaMove.y * 0.5;
+    
+    cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+}
+
 function renderApp() {
   const controlsContainer = document.getElementById('controls')!;
   const cubeNetContainer = document.getElementById('cube-net')!;
@@ -156,6 +216,7 @@ function renderApp() {
       face.bgColor = (e.target as HTMLInputElement).value;
       document.getElementById(`badge-${face.id}`)!.style.backgroundColor = face.bgColor;
       document.getElementById(`face-el-${face.id}`)!.style.backgroundColor = face.bgColor;
+      update3DCube();
     });
 
     const updateImage = () => {
@@ -168,6 +229,7 @@ function renderApp() {
         badgeEl.innerHTML = face.emoji;
         imgWrapEl.innerHTML = `<div class="emoji" style="font-size: 40px;">${face.emoji}</div>`;
       }
+      update3DCube();
     };
 
     document.getElementById(`select-emoji-${face.id}`)?.addEventListener('change', (e) => {
@@ -215,10 +277,13 @@ function renderApp() {
       (document.getElementById(`input-${face.id}`) as HTMLTextAreaElement).value = face.defaultText;
     });
   });
+
+  update3DCube();
 }
 
 function initApp() {
   renderApp();
+  init3DDrag();
   
   document.getElementById('print-btn')?.addEventListener('click', () => {
     confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });

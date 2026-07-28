@@ -14,10 +14,10 @@
       <aside class="sidebar no-print">
         <header>
           <div class="logo">
-            <span class="icon">🎲</span>
-            <h1 style="font-size: 22px;">Nadine's Fragewürfel Creator</h1>
+            <div class="icon">🎲</div>
+            <h1>Nadine's Fragewürfel Creator</h1>
           </div>
-          <p>Create & print your custom question cube</p>
+          <p>Gestalte deinen eigenen Würfel!</p>
         </header>
 
         <div class="controls" id="controls">
@@ -73,6 +73,21 @@
 
         </div>
       </main>
+      
+      <div class="cube-widget no-print" title="Drag to rotate">
+        <div class="scene" id="scene-3d">
+          <div class="cube" id="cube-3d">
+            <div class="cube-face cube-front" id="3d-center"></div>
+            <div class="cube-face cube-back" id="3d-back"></div>
+            <div class="cube-face cube-right" id="3d-right1"></div>
+            <div class="cube-face cube-left" id="3d-left"></div>
+            <div class="cube-face cube-top" id="3d-top"></div>
+            <div class="cube-face cube-bottom" id="3d-bottom"></div>
+          </div>
+        </div>
+        <div class="widget-hint">Drag to rotate! 👆</div>
+      </div>
+      
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
