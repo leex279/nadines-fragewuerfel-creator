@@ -247,6 +247,13 @@ function renderApp() {
 function initApp() {
   renderApp();
   
+  document.getElementById('vorschau-btn')?.addEventListener('click', () => {
+    const widget = document.querySelector('.cube-widget');
+    if (widget) {
+      widget.classList.toggle('show');
+    }
+  });
+
   document.getElementById('print-btn')?.addEventListener('click', () => {
     confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
     setTimeout(() => {
